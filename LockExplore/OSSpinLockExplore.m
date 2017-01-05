@@ -21,30 +21,17 @@
     if (self) {
         self.tickets = tickets;
         _spinlock = OS_SPINLOCK_INIT;
-        self.concurrentQueue = dispatch_queue_create("synchronized", DISPATCH_QUEUE_CONCURRENT);
+        self.concurrentQueue = dispatch_queue_create("OSSpinLock", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
 
 - (void)safeSaleTickets {
-    dispatch_async(self.concurrentQueue, ^{
-        [self safeSale];
-    });
-    dispatch_async(self.concurrentQueue, ^{
-        [self safeSale];
-    });
-    dispatch_async(self.concurrentQueue, ^{
-        [self safeSale];
-    });
-    dispatch_async(self.concurrentQueue, ^{
-        [self safeSale];
-    });
-    dispatch_async(self.concurrentQueue, ^{
-        [self safeSale];
-    });
-    dispatch_async(self.concurrentQueue, ^{
-        [self safeSale];
-    });
+    for (int i=0; i<5; i++) {
+        dispatch_async(self.concurrentQueue, ^{
+            [self safeSale];
+        });
+    }
 }
 
 - (void)safeSale {
