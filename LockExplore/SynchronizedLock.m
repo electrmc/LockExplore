@@ -38,6 +38,15 @@
     }
 }
 
+- (void)unknownSecuritySaleTickets {
+    NSObject *object = [NSObject new];
+    for (int i=0; i<5; i++) {
+        dispatch_async(self.concurrentQueue, ^{
+            [self synchronizedNilToken:object];
+        });
+    }
+}
+
 - (void)dangerSale {
     while (1) {
         [NSThread sleepForTimeInterval:0.5];
@@ -48,7 +57,6 @@
             NSLog(@"票买完了 Thread:%@",[NSThread currentThread]);
             break;
         }
-        
     }
 }
 
@@ -64,6 +72,25 @@
                 break;
             }
         }
+    }
+}
+
+
+- (void)synchronizedNilToken:(NSObject*)object {
+    while (1) {
+        NSLog(@"object : %@",object);
+        [NSThread sleepForTimeInterval:0.5];
+        @synchronized (object) {
+            object = nil;
+            if (self.tickets > 0) {
+                self.tickets--;
+                NSLog(@"剩余票数= %ld, Thread:%@",_tickets,[NSThread currentThread]);
+            } else {
+                NSLog(@"票买完了 Thread:%@",[NSThread currentThread]);
+                break;
+            }
+        }
+        object = nil;
     }
 }
 

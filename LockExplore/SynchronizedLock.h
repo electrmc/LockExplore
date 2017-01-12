@@ -12,5 +12,5 @@
 - (instancetype)initWithTickets:(NSUInteger)tickets;
 - (void)dangerSaleTickets;
 - (void)safeSaleTickets;
-
+- (void)unknownSecuritySaleTickets;
 @end

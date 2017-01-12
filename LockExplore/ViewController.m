@@ -31,6 +31,11 @@
     [sl dangerSaleTickets];
 }
 
+- (IBAction)synchronizedNil:(id)sender {
+    SynchronizedLock *sl = [[SynchronizedLock alloc]initWithTickets:100];
+    [sl unknownSecuritySaleTickets];
+}
+
 - (IBAction)nslockSafe:(id)sender {
     NSLockExplore *le = [[NSLockExplore alloc]initWithTickets:100];
     [le safeSaleTickets];
