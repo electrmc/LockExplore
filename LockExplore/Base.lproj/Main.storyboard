@@ -97,6 +97,22 @@
                                     <action selector="semaphoreSafe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LKa-IL-QKa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-cq-Hgc">
+                                <rect key="frame" x="16" y="269" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="pThread"/>
+                                <connections>
+                                    <action selector="pThread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R5b-Ju-Yxc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Lr-zw-22o">
+                                <rect key="frame" x="124" y="269" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="NSThread"/>
+                                <connections>
+                                    <action selector="nsthread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zb4-SK-cbJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

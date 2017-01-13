@@ -11,6 +11,9 @@
 #import "NSLockExplore.h"
 #import "OSSpinLockExplore.h"
 #import "SemaphoreExplore.h"
+
+#import "PThreadExplore.h"
+
 @interface ViewController ()
 
 @end
@@ -50,4 +53,15 @@
     SemaphoreExplore *se = [[SemaphoreExplore alloc]initWithTickets:100];
     [se safeSaleTickets];
 }
+
+- (IBAction)pThread:(id)sender {
+    PThreadExplore *pe = [[PThreadExplore alloc] init];
+    [pe startpThread];
+}
+
+- (IBAction)nsthread:(id)sender {
+    PThreadExplore *pe = [[PThreadExplore alloc] init];
+    [pe startNSThread];
+}
+
 @end
