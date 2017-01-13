@@ -17,6 +17,7 @@
 		4CE2A9CC1DF634E5004C50EB /* SynchronizedLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2A9CB1DF634E5004C50EB /* SynchronizedLock.m */; };
 		4CF6D39F1DF7877F0087C244 /* NSLockExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6D39E1DF7877F0087C244 /* NSLockExplore.m */; };
 		4CF6D3A21DF78B8B0087C244 /* OSSpinLockExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6D3A11DF78B8B0087C244 /* OSSpinLockExplore.m */; };
+		54EC3D5D1E285D140024716A /* NSOperationExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EC3D5C1E285D140024716A /* NSOperationExplore.m */; };
 		54F002891E27A4F300CBBB17 /* PThreadExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F002881E27A4F300CBBB17 /* PThreadExplore.m */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,8 @@
 		4CF6D39E1DF7877F0087C244 /* NSLockExplore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLockExplore.m; sourceTree = "<group>"; };
 		4CF6D3A01DF78B8B0087C244 /* OSSpinLockExplore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSpinLockExplore.h; sourceTree = "<group>"; };
 		4CF6D3A11DF78B8B0087C244 /* OSSpinLockExplore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSpinLockExplore.m; sourceTree = "<group>"; };
+		54EC3D5B1E285D140024716A /* NSOperationExplore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSOperationExplore.h; sourceTree = "<group>"; };
+		54EC3D5C1E285D140024716A /* NSOperationExplore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSOperationExplore.m; sourceTree = "<group>"; };
 		54F002871E27A4F300CBBB17 /* PThreadExplore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PThreadExplore.h; sourceTree = "<group>"; };
 		54F002881E27A4F300CBBB17 /* PThreadExplore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PThreadExplore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +90,8 @@
 				4CD541291DFF74DD00BF2487 /* SemaphoreExplore.m */,
 				54F002871E27A4F300CBBB17 /* PThreadExplore.h */,
 				54F002881E27A4F300CBBB17 /* PThreadExplore.m */,
+				54EC3D5B1E285D140024716A /* NSOperationExplore.h */,
+				54EC3D5C1E285D140024716A /* NSOperationExplore.m */,
 				4CE2A9BC1DF63456004C50EB /* Main.storyboard */,
 				4CE2A9BF1DF63456004C50EB /* Assets.xcassets */,
 				4CE2A9C11DF63456004C50EB /* LaunchScreen.storyboard */,
@@ -179,6 +184,7 @@
 				4CE2A9BB1DF63456004C50EB /* ViewController.m in Sources */,
 				54F002891E27A4F300CBBB17 /* PThreadExplore.m in Sources */,
 				4CF6D39F1DF7877F0087C244 /* NSLockExplore.m in Sources */,
+				54EC3D5D1E285D140024716A /* NSOperationExplore.m in Sources */,
 				4CE2A9B81DF63456004C50EB /* AppDelegate.m in Sources */,
 				4CD5412A1DFF74DD00BF2487 /* SemaphoreExplore.m in Sources */,
 				4CE2A9CC1DF634E5004C50EB /* SynchronizedLock.m in Sources */,

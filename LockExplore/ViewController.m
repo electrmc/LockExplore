@@ -13,6 +13,7 @@
 #import "SemaphoreExplore.h"
 
 #import "PThreadExplore.h"
+#import "NSOperationExplore.h"
 
 @interface ViewController ()
 
@@ -62,6 +63,26 @@
 - (IBAction)nsthread:(id)sender {
     PThreadExplore *pe = [[PThreadExplore alloc] init];
     [pe startNSThread];
+}
+
+- (IBAction)invocationOperation:(id)sender {
+    NSOperationExplore *ope = [NSOperationExplore new];
+    [ope startInvocationOperation];
+}
+
+- (IBAction)blockOperation:(id)sender {
+    NSOperationExplore *ope = [NSOperationExplore new];
+    [ope startBlockOperation];
+}
+
+- (IBAction)operationQueue:(id)sender {
+    NSOperationExplore *ope = [NSOperationExplore new];
+    [ope startOperationQueue];
+}
+
+- (IBAction)dependecyOperation:(id)sender {
+    NSOperationExplore *ope = [NSOperationExplore new];
+    [ope dependencyOperation];
 }
 
 @end

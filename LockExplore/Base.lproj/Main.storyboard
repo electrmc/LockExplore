@@ -113,13 +113,45 @@
                                     <action selector="nsthread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zb4-SK-cbJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH5-LP-F2x">
+                                <rect key="frame" x="16" y="315" width="159" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="NSInvocationOperation"/>
+                                <connections>
+                                    <action selector="invocationOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="po4-xM-lsN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryi-nA-Y9s">
+                                <rect key="frame" x="16" y="361" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="NSBlockOperation"/>
+                                <connections>
+                                    <action selector="blockOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bH1-5e-VZK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzc-IF-429">
+                                <rect key="frame" x="16" y="407" width="134" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="NSOperationQueue"/>
+                                <connections>
+                                    <action selector="operationQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DYD-u2-aYQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLi-nv-tar">
+                                <rect key="frame" x="16" y="445" width="147" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DependecyOperation"/>
+                                <connections>
+                                    <action selector="dependecyOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="heQ-Yz-7aV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="-22"/>
+            <point key="canvasLocation" x="-28.125" y="-22.183098591549296"/>
         </scene>
     </scenes>
 </document>
