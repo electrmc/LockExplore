@@ -10,6 +10,9 @@
 
 // NSLock是一个对象，因此在使用时需要一个对象对它进行持有才可以
 // 这就限制了它不能在一些底层或C方法中使用
+
+// trylock lock unlock 多线程中应用
+
 @interface NSLockExplore : NSObject
 - (instancetype)initWithTickets:(NSUInteger)tickets;
 - (void)safeSaleTickets;

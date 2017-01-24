@@ -36,6 +36,13 @@
 - (void)safeSale {
     while (1) {
         [NSThread sleepForTimeInterval:0.5];
+        /******************************************
+         * NSLock *lockTemp = [[NSLock alloc]init];
+         * [lockTemp lock];
+         * .......
+         * [lockTemp unlock];
+         * 如果此处这样的话相当于没加锁
+        ******************************************/
         [_mutexLock lock];
         if (self.tickets > 0) {
             self.tickets--;
