@@ -12,7 +12,8 @@
 
 @property (nonatomic, strong) NSThread *thread;
 
-- (void)initThread;
-- (void)executeSomething;
-
+- (void)startThreadWithRunloop;
+- (void)executeMethodInThread;
+- (void)threadStatus;
+- (void)stopRunloop;
 @end

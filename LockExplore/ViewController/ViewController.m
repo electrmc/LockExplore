@@ -9,8 +9,11 @@
 #import "ViewController.h"
 #import "LockViewController.h"
 #import "ThreadViewController.h"
+#import "RunloopViewController.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) NSArray *titles;
+@property (strong, nonatomic) NSArray *vcNames;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end
@@ -20,10 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"thread program";
+    self.titles = @[@"lock in iOS",@"thread in iOS", @"runloop"];
+    self.vcNames = @[@"LockViewController", @"ThreadViewController", @"RunloopViewController"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return self.titles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,34 +37,14 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    NSString *title = nil;
-    switch (indexPath.row) {
-        case 0:
-            title = @"lock in iOS";
-            break;
-        case 1:
-            title = @"thread in iOS";
-            break;
-        default:
-            break;
-    }
-    cell.textLabel.text = title;
+    cell.textLabel.text = self.titles[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *vc = nil;
-    switch (indexPath.row) {
-        case 0:
-            vc = [[LockViewController alloc]init];
-            break;
-        case 1:
-            vc = [[ThreadViewController alloc]init];
-            break;
-        default:
-            break;
-    }
+    NSString *className = self.vcNames[indexPath.row];
+    UIViewController *vc = [[NSClassFromString(className) alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
