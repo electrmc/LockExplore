@@ -1,27 +1,31 @@
 //
-//  OSSpinLockExplore.m
+//  NSLockExplore.m
 //  LockExplore
 //
 //  Created by MiaoChao on 2016/12/7.
 //  Copyright © 2016年 MiaoChao. All rights reserved.
 //
 
-#import "OSSpinLockExplore.h"
-#include <libkern/OSAtomic.h>
+#import "NSLockExplore.h"
 
-@interface OSSpinLockExplore ()
+@interface NSLockExplore ()
 @property (nonatomic, assign) NSUInteger tickets;
-@property (nonatomic, assign) OSSpinLock spinlock;
+@property (nonatomic, strong) NSLock *mutexLock;
 @property (nonatomic, strong) dispatch_queue_t concurrentQueue;
 @end
 
-@implementation OSSpinLockExplore
+@implementation NSLockExplore
+
+- (instancetype)init {
+    return [self initWithTickets:100];
+}
+
 - (instancetype)initWithTickets:(NSUInteger)tickets {
     self = [super init];
     if (self) {
         self.tickets = tickets;
-        _spinlock = OS_SPINLOCK_INIT;
-        self.concurrentQueue = dispatch_queue_create("OSSpinLock", DISPATCH_QUEUE_CONCURRENT);
+        self.mutexLock = [[NSLock alloc]init];
+        self.concurrentQueue = dispatch_queue_create("NSLockExplore", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -37,7 +41,14 @@
 - (void)safeSale {
     while (1) {
         [NSThread sleepForTimeInterval:0.5];
-        OSSpinLockLock(&_spinlock);
+        /******************************************
+         * NSLock *lockTemp = [[NSLock alloc]init];
+         * [lockTemp lock];
+         * .......
+         * [lockTemp unlock];
+         * 如果此处这样的话相当于没加锁
+        ******************************************/
+        [_mutexLock lock];
         if (self.tickets > 0) {
             self.tickets--;
             NSLog(@"剩余票数= %ld, Thread:%@",_tickets,[NSThread currentThread]);
@@ -45,9 +56,8 @@
             NSLog(@"票买完了 Thread:%@",[NSThread currentThread]);
             break;
         }
-        OSSpinLockUnlock(&_spinlock);
+        [_mutexLock unlock];
     }
 }
-
 
 @end

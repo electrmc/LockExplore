@@ -2,14 +2,12 @@
 //  ViewController.h
 //  LockExplore
 //
-//  Created by MiaoChao on 2016/12/6.
-//  Copyright © 2016年 MiaoChao. All rights reserved.
+//  Created by MiaoChao on 2017/1/24.
+//  Copyright © 2017年 MiaoChao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
 
-
 @end
-

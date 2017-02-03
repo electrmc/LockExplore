@@ -1,26 +1,31 @@
 //
-//  NSLockExplore.m
+//  SemaphoreExplore.m
 //  LockExplore
 //
-//  Created by MiaoChao on 2016/12/7.
+//  Created by MiaoChao on 2016/12/13.
 //  Copyright © 2016年 MiaoChao. All rights reserved.
 //
 
-#import "NSLockExplore.h"
+#import "SemaphoreExplore.h"
 
-@interface NSLockExplore ()
+@interface SemaphoreExplore ()
 @property (nonatomic, assign) NSUInteger tickets;
-@property (nonatomic, strong) NSLock *mutexLock;
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
 @property (nonatomic, strong) dispatch_queue_t concurrentQueue;
 @end
 
-@implementation NSLockExplore
+@implementation SemaphoreExplore
+
+- (instancetype)init {
+    return [self initWithTickets:100];
+}
+
 - (instancetype)initWithTickets:(NSUInteger)tickets {
     self = [super init];
     if (self) {
         self.tickets = tickets;
-        self.mutexLock = [[NSLock alloc]init];
-        self.concurrentQueue = dispatch_queue_create("NSLockExplore", DISPATCH_QUEUE_CONCURRENT);
+        self.semaphore = dispatch_semaphore_create(1);
+        self.concurrentQueue = dispatch_queue_create("Semaphore", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -36,14 +41,7 @@
 - (void)safeSale {
     while (1) {
         [NSThread sleepForTimeInterval:0.5];
-        /******************************************
-         * NSLock *lockTemp = [[NSLock alloc]init];
-         * [lockTemp lock];
-         * .......
-         * [lockTemp unlock];
-         * 如果此处这样的话相当于没加锁
-        ******************************************/
-        [_mutexLock lock];
+        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
         if (self.tickets > 0) {
             self.tickets--;
             NSLog(@"剩余票数= %ld, Thread:%@",_tickets,[NSThread currentThread]);
@@ -51,8 +49,10 @@
             NSLog(@"票买完了 Thread:%@",[NSThread currentThread]);
             break;
         }
-        [_mutexLock unlock];
+        dispatch_semaphore_signal(self.semaphore);
     }
 }
+
+
 
 @end

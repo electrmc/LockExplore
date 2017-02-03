@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 // pthread 是C语言的方法，在swift中不好用，其次要手动管理线程的生命周期，比较麻烦。
-@interface PThreadExplore : NSObject
+@interface ThreadExplore : NSObject
 
 - (void)startNSThread;
+- (void)detachNewThread;
+
 - (void)startpThread;
 
 @end

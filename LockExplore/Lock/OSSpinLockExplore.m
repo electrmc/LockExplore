@@ -1,27 +1,32 @@
 //
-//  SemaphoreExplore.m
+//  OSSpinLockExplore.m
 //  LockExplore
 //
-//  Created by MiaoChao on 2016/12/13.
+//  Created by MiaoChao on 2016/12/7.
 //  Copyright © 2016年 MiaoChao. All rights reserved.
 //
 
-#import "SemaphoreExplore.h"
+#import "OSSpinLockExplore.h"
+#include <libkern/OSAtomic.h>
 
-@interface SemaphoreExplore ()
+@interface OSSpinLockExplore ()
 @property (nonatomic, assign) NSUInteger tickets;
-@property (nonatomic, strong) dispatch_semaphore_t semaphore;
+@property (nonatomic, assign) OSSpinLock spinlock;
 @property (nonatomic, strong) dispatch_queue_t concurrentQueue;
 @end
 
-@implementation SemaphoreExplore
+@implementation OSSpinLockExplore
+
+- (instancetype)init {
+    return [self initWithTickets:100];
+}
 
 - (instancetype)initWithTickets:(NSUInteger)tickets {
     self = [super init];
     if (self) {
         self.tickets = tickets;
-        self.semaphore = dispatch_semaphore_create(1);
-        self.concurrentQueue = dispatch_queue_create("Semaphore", DISPATCH_QUEUE_CONCURRENT);
+        _spinlock = OS_SPINLOCK_INIT;
+        self.concurrentQueue = dispatch_queue_create("OSSpinLock", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -37,7 +42,7 @@
 - (void)safeSale {
     while (1) {
         [NSThread sleepForTimeInterval:0.5];
-        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+        OSSpinLockLock(&_spinlock);
         if (self.tickets > 0) {
             self.tickets--;
             NSLog(@"剩余票数= %ld, Thread:%@",_tickets,[NSThread currentThread]);
@@ -45,10 +50,9 @@
             NSLog(@"票买完了 Thread:%@",[NSThread currentThread]);
             break;
         }
-        dispatch_semaphore_signal(self.semaphore);
+        OSSpinLockUnlock(&_spinlock);
     }
 }
-
 
 
 @end

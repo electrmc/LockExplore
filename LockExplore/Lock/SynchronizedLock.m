@@ -13,6 +13,10 @@
 @end
 
 @implementation SynchronizedLock
+- (instancetype)init {
+    return [self initWithTickets:100];
+}
+
 - (instancetype)initWithTickets:(NSUInteger)tickets {
     self = [super init];
     if (self) {
