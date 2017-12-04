@@ -10,8 +10,8 @@
 
 @implementation NSOperationExplore
 
-// NSOperationQueue没有start方法，完成addOperation后就会执行
-// NSOperation既可以添加operation，也可以直接添加block
+// NSOperationQueue没有start方法，完成addOperation后就会执行。这个概念类似于dispatch_group
+// NSOperation既可以单独执行，也可以加到NSOperationQueue中执行
 // NSOperationQueue和NSOperation的不同是：queue是只在后台队列中执行，而NSOperation会优先从当前队列中执行
 - (void)startOperationQueue {
     //1,创建1个队列
