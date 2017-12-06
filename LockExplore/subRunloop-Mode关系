@@ -1,0 +1,67 @@
+<CFRunLoop 0x6000001fc000 [0x102038960]>
+{
+	wakeup port = 0x5323, stopped = false, ignoreWakeUps = false, 
+	current mode = kCFRunLoopDefaultMode,
+	common modes = <CFBasicHash 0x60400024a3b0 [0x102038960]>
+	{
+		type = mutable set, count = 1,
+		entries =>
+			2 : <CFString 0x10200e790 [0x102038960]>{contents = "kCFRunLoopDefaultMode"}
+	},
+	common mode items = <CFBasicHash 0x604000244830 [0x102038960]>
+	{
+		type = mutable set, count = 2,
+		entries =>
+			1 : <CFRunLoopTimer 0x600000171340 [0x102038960]>{valid = Yes, firing = No, interval = 5, tolerance = 0, next fire date = 534066348 (-7.1635254 @ 23099623824333), callout = (NSTimer) [NSRunloopExplore timerTest:] (0x100e7119b / 0x100ae9d10) (/Users/miaochao/Library/Developer/CoreSimulator/Devices/F25A968C-BAB4-4854-92F2-4D10F49D8665/data/Containers/Bundle/Application/195A3603-A734-4EF2-84CE-D2864C435158/LockExplore.app/LockExplore), context = <CFRunLoopTimer context 0x600000429bc0>}
+			2 : <CFRunLoopSource 0x604000171d00 [0x102038960]>{signalled = No, valid = Yes, order = 0, context = <CFRunLoopSource context>{version = 0, info = 0x604000008860, callout = __NSThreadPerformPerform (0x100e477fa)}}
+	},
+	modes = <CFBasicHash 0x60000024c360 [0x102038960]>
+	{
+		type = mutable set, count = 2,
+		entries =>
+			0 : <CFRunLoopMode 0x600000381ba0 [0x102038960]>
+			{
+				name = CustomMode, port set = 0x620b, queue = 0x600000146250, source = 0x600000381fb0 (not fired), timer port = 0x6e07, 
+				sources0 = (null),
+				sources1 = (null),
+				observers = (null),
+				timers = <CFArray 0x6000000a86a0 [0x102038960]>{type = mutable-small, count = 2, values = (
+				0 : <CFRunLoopTimer 0x6000001714c0 [0x102038960]>{valid = Yes, firing = No, interval = 7, tolerance = 0, next fire date = 534066195 (-160.163752 @ 22946623838944), callout = (NSTimer) [NSRunloopExplore timerTest:] (0x100e7119b / 0x100ae9d10) (/Users/miaochao/Library/Developer/CoreSimulator/Devices/F25A968C-BAB4-4854-92F2-4D10F49D8665/data/Containers/Bundle/Application/195A3603-A734-4EF2-84CE-D2864C435158/LockExplore.app/LockExplore), context = <CFRunLoopTimer context 0x600000429200>}
+				1 : <CFRunLoopTimer 0x60400016fa80 [0x102038960]>{valid = Yes, firing = No, interval = 8, tolerance = 0, next fire date = 534066196 (-159.163698 @ 22947623906049), callout = (NSTimer) [NSRunloopExplore timerTest:] (0x100e7119b / 0x100ae9d10) (/Users/miaochao/Library/Developer/CoreSimulator/Devices/F25A968C-BAB4-4854-92F2-4D10F49D8665/data/Containers/Bundle/Application/195A3603-A734-4EF2-84CE-D2864C435158/LockExplore.app/LockExplore), context = <CFRunLoopTimer context 0x604000221780>}
+				)},
+				currently 534066355 (23106787577656) / soft deadline in: 1.84467439e+10 sec (@ 22946623838944) / hard deadline in: 1.84467439e+10 sec (@ 22946623838944)
+			},
+			2 : <CFRunLoopMode 0x60400018cf30 [0x102038960]>
+			{
+				name = kCFRunLoopDefaultMode, port set = 0x690b, queue = 0x604000146250, source = 0x60400018d000 (not fired), timer port = 0x6707, 
+				sources0 = <CFBasicHash 0x60400024a080 [0x102038960]>
+				{
+					type = mutable set, count = 1,
+					entries =>
+						2 : <CFRunLoopSource 0x604000171d00 [0x102038960]>{signalled = No, valid = Yes, order = 0, context = <CFRunLoopSource context>{version = 0, info = 0x604000008860, callout = __NSThreadPerformPerform (0x100e477fa)}}
+				},
+				sources1 = <CFBasicHash 0x604000245b80 [0x102038960]>
+				{
+					type = mutable set, count = 1,
+					entries =>
+						1 : <CFRunLoopSource 0x604000171280 [0x102038960]>{signalled = No, valid = Yes, order = 200, context = <CFMachPort 0x604000146eb0 [0x102038960]>{valid = Yes, port = 6607, source = 0x604000171280, callout = __NSFireMachPort (0x100e69ad9), context = <CFMachPort context 0x60400024a320>}}
+				},
+				observers = (null),
+				timers = <CFArray 0x6000000a8700 [0x102038960]>
+				{
+					type = mutable-small, count = 2, values = 
+					(
+						0 : <CFRunLoopTimer 0x600000171340 [0x102038960]>
+						{
+							valid = Yes, firing = No, interval = 5, tolerance = 0, next fire date = 534066348 (-7.16390443 @ 23099623824333), callout = (NSTimer) [NSRunloopExplore timerTest:] (0x100e7119b / 0x100ae9d10) (/Users/miaochao/Library/Developer/CoreSimulator/Devices/F25A968C-BAB4-4854-92F2-4D10F49D8665/data/Containers/Bundle/Application/195A3603-A734-4EF2-84CE-D2864C435158/LockExplore.app/LockExplore), context = <CFRunLoopTimer context 0x600000429bc0>
+						}
+						1 : <CFRunLoopTimer 0x600000171400 [0x102038960]>
+						{
+							valid = Yes, firing = No, interval = 6, tolerance = 0, next fire date = 534066350 (-5.16390508 @ 23101623835417), callout = (NSTimer) [NSRunloopExplore timerTest:] (0x100e7119b / 0x100ae9d10) (/Users/miaochao/Library/Developer/CoreSimulator/Devices/F25A968C-BAB4-4854-92F2-4D10F49D8665/data/Containers/Bundle/Application/195A3603-A734-4EF2-84CE-D2864C435158/LockExplore.app/LockExplore), context = <CFRunLoopTimer context 0x600000424b60>
+						}
+					)
+				},
+				currently 534066355 (23106787625156) / soft deadline in: 1.84467441e+10 sec (@ 23099623824333) / hard deadline in: 1.84467441e+10 sec (@ 23099623824333)
+			},
+	}
+}
