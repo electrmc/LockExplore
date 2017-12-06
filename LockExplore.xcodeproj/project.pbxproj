@@ -60,6 +60,7 @@
 		5471670D1E3758190052B632 /* SemaphoreExplore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemaphoreExplore.m; path = Lock/SemaphoreExplore.m; sourceTree = "<group>"; };
 		5471670E1E3758190052B632 /* SynchronizedLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynchronizedLock.h; path = Lock/SynchronizedLock.h; sourceTree = "<group>"; };
 		5471670F1E3758190052B632 /* SynchronizedLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynchronizedLock.m; path = Lock/SynchronizedLock.m; sourceTree = "<group>"; };
+		549C9E7E1FD7F31700C834E2 /* RunLoop-SourceCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunLoop-SourceCode.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +156,7 @@
 				547167021E37580F0052B632 /* NSRunloopExplore.m */,
 				547167031E37580F0052B632 /* ThreadExplore.h */,
 				547167041E37580F0052B632 /* ThreadExplore.m */,
+				549C9E7E1FD7F31700C834E2 /* RunLoop-SourceCode.h */,
 			);
 			name = Thread;
 			sourceTree = "<group>";
