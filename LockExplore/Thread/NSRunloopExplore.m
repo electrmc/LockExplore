@@ -77,4 +77,56 @@ BOOL shouldKeepRunning = YES;
         NSLog(@"thread is executing");
     }
 }
+
+/*
+  探究主线程以及线程中的CommonMode是否真实存在
+ */
+- (void)addSource{
+    [self performSelector:@selector(addSourceToRunloop) onThread:_thread withObject:nil waitUntilDone:NO];
+}
+
+- (void)addSourceToRunloop {
+    NSRunLoop *mainLoop = [NSRunLoop mainRunLoop];
+    NSTimer *timerx = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(timerTest:) userInfo:@"trackingTimer" repeats:YES];
+    [mainLoop addTimer:timerx forMode:UITrackingRunLoopMode];
+    NSTimer *timerx1 = [NSTimer timerWithTimeInterval:6.0 target:self selector:@selector(timerTest:) userInfo:@"defaultTimer" repeats:YES];
+    [mainLoop addTimer:timerx1 forMode:NSDefaultRunLoopMode];
+    NSTimer *timerx2 = [NSTimer timerWithTimeInterval:7.0 target:self selector:@selector(timerTest:) userInfo:@"commonTimer" repeats:YES];
+    [mainLoop addTimer:timerx2 forMode:NSRunLoopCommonModes];
+    NSTimer *timerx3 = [NSTimer timerWithTimeInterval:8.0 target:self selector:@selector(timerTest:) userInfo:@"customTimer" repeats:YES];
+    [mainLoop addTimer:timerx3 forMode:@"CustomMode"];
+    
+    
+    NSRunLoop *runloop = [NSRunLoop currentRunLoop];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(timerTest:) userInfo:@"timer0" repeats:YES];
+    [runloop addTimer:timer forMode:NSRunLoopCommonModes];
+    
+    NSTimer *timer1 = [NSTimer timerWithTimeInterval:6.0 target:self selector:@selector(timerTest:) userInfo:@"timer1" repeats:YES];
+    [runloop addTimer:timer1 forMode:NSDefaultRunLoopMode];
+    
+    NSTimer *timer2 = [NSTimer timerWithTimeInterval:7.0 target:self selector:@selector(timerTest:) userInfo:@"timer2" repeats:YES];
+    [runloop addTimer:timer2 forMode:@"CustomMode"];
+    
+    NSTimer *timer3 = [NSTimer timerWithTimeInterval:8.0 target:self selector:@selector(timerTest:) userInfo:@"timer3" repeats:YES];
+    [runloop addTimer:timer3 forMode:@"CustomMode"];
+}
+
+- (void)timerTest:(NSTimer*)timer{
+    NSLog(@"%@",timer.userInfo);
+}
+
+- (void)getRunloopModeStructure {
+    NSRunLoop *runloop = [NSRunLoop currentRunLoop]; 
+    CFRunLoopRef cfrunloop2 = [runloop getCFRunLoop];
+    NSLog(@"%@",cfrunloop2);
+    [self performSelector:@selector(runloopModeStructure) onThread:_thread withObject:nil waitUntilDone:NO];
+}
+
+- (void)runloopModeStructure {
+    CFRunLoopRef currentRunloop = CFRunLoopGetCurrent();
+    NSRunLoop *runloop = [NSRunLoop currentRunLoop]; 
+    CFRunLoopRef cfrunloop2 = [runloop getCFRunLoop];
+    NSLog(@"%@,%@,%@",currentRunloop,runloop,cfrunloop2);
+}
+
 @end

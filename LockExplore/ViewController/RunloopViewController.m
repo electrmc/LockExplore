@@ -10,6 +10,7 @@
 #import "NSRunloopExplore.h"
 
 @interface RunloopViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (nonatomic, strong)NSRunloopExplore *oe;
 @end
 
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.oe = [NSRunloopExplore new];
+    self.scrollview.contentSize = CGSizeMake(500, 500);
 }
 
 - (IBAction)startThreadRunloop:(id)sender {
@@ -31,6 +33,12 @@
 }
 - (IBAction)stopThread:(id)sender {
     [self.oe stopRunloop];
+}
+- (IBAction)addSource:(id)sender {
+    [self.oe addSource];
+}
+- (IBAction)runloopModeStructure:(id)sender {
+    [self.oe getRunloopModeStructure];
 }
 
 @end

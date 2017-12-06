@@ -6,7 +6,7 @@
 //  Copyright © 2017年 MiaoChao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSRunloopExplore : NSObject
 
@@ -16,4 +16,8 @@
 - (void)executeMethodInThread;
 - (void)threadStatus;
 - (void)stopRunloop;
+
+#pragma mark - 探究runloop mode的结构
+- (void)addSource;
+- (void)getRunloopModeStructure;
 @end
