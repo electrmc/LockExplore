@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCl-cY-iho">
-                    <rect key="frame" x="16" y="103" width="157" height="30"/>
+                    <rect key="frame" x="16" y="68" width="157" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="startThreadOnRunloop"/>
                     <connections>
@@ -29,7 +29,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnQ-j2-jcE">
-                    <rect key="frame" x="16" y="141" width="164" height="30"/>
+                    <rect key="frame" x="16" y="106" width="164" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="executemethodInthread"/>
                     <connections>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecp-cW-cfj">
-                    <rect key="frame" x="16" y="179" width="93" height="30"/>
+                    <rect key="frame" x="16" y="144" width="93" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="ThreadStatus"/>
                     <connections>
@@ -45,34 +45,66 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-ZV-Zfb">
-                    <rect key="frame" x="16" y="217" width="78" height="30"/>
+                    <rect key="frame" x="16" y="182" width="78" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="stopThread"/>
                     <connections>
                         <action selector="stopThread:" destination="-1" eventType="touchUpInside" id="odB-Za-5jE"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQr-IQ-hcQ">
-                    <rect key="frame" x="0.0" y="368" width="156" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="runloopModeStructure"/>
-                    <connections>
-                        <action selector="runloopModeStructure:" destination="-1" eventType="touchUpInside" id="cdM-1D-VcM"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXY-r3-YZJ">
-                    <rect key="frame" x="2" y="301" width="75" height="30"/>
+                    <rect key="frame" x="16" y="232" width="123" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="addSource"/>
+                    <state key="normal" title="addSourceToMain"/>
                     <connections>
-                        <action selector="addSource:" destination="-1" eventType="touchUpInside" id="2gI-Xm-yU9"/>
+                        <action selector="addSourceToMainThread:" destination="-1" eventType="touchUpInside" id="2gI-Xm-yU9"/>
                     </connections>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjZ-BO-AP0">
-                    <rect key="frame" x="16" y="432" width="240" height="128"/>
+                    <rect key="frame" x="8" y="491" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuZ-Jx-wYP">
+                    <rect key="frame" x="208" y="311" width="150" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="addobserverToThread"/>
+                    <connections>
+                        <action selector="addObserverToThread:" destination="-1" eventType="touchUpInside" id="SEh-qr-0nN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFC-BZ-cuQ">
+                    <rect key="frame" x="16" y="311" width="138" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="addObserverToMain"/>
+                    <connections>
+                        <action selector="addObserverToMain:" destination="-1" eventType="touchUpInside" id="lmH-sN-WM2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdC-lY-lSt">
+                    <rect key="frame" x="208" y="232" width="137" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="addSourceToThread"/>
+                    <connections>
+                        <action selector="addSourceToThread:" destination="-1" eventType="touchUpInside" id="z1i-kp-LD0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxJ-uu-CYy">
+                    <rect key="frame" x="11" y="273" width="154" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="mainRunloopStructure"/>
+                    <connections>
+                        <action selector="mainRunloopModeSturcture:" destination="-1" eventType="touchUpInside" id="zcX-dr-9JY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQr-IQ-hcQ">
+                    <rect key="frame" x="201" y="273" width="165" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="threadRunloopStructure"/>
+                    <connections>
+                        <action selector="threadRunloopModeStructure:" destination="-1" eventType="touchUpInside" id="cdM-1D-VcM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="-473" y="9"/>

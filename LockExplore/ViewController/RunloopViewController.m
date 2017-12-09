@@ -34,11 +34,31 @@
 - (IBAction)stopThread:(id)sender {
     [self.oe stopRunloop];
 }
-- (IBAction)addSource:(id)sender {
-    [self.oe addSource];
-}
-- (IBAction)runloopModeStructure:(id)sender {
-    [self.oe getRunloopModeStructure];
+
+#pragma mark - runloop mode structure
+
+- (IBAction)addSourceToMainThread:(id)sender {
+    [self.oe addSourceToMainRunloop];
 }
 
+- (IBAction)addSourceToThread:(id)sender {
+    [self.oe addSourceToThread];
+}
+
+- (IBAction)mainRunloopModeSturcture:(id)sender {
+    [self.oe getMainRunloopStructure];
+}
+
+- (IBAction)threadRunloopModeStructure:(id)sender {
+    [self.oe getThreadRunLoopStructure];
+}
+
+#pragma mark - add observer
+- (IBAction)addObserverToThread:(id)sender {
+    [self.oe addObserverToThread];
+}
+
+- (IBAction)addObserverToMain:(id)sender {
+    [self.oe addObserverToMainThread];
+}
 @end

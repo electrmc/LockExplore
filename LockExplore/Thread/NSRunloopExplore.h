@@ -17,7 +17,14 @@
 - (void)threadStatus;
 - (void)stopRunloop;
 
+#pragma mark - 探究observer监听runloop的状态
+- (void)addObserverToThread;
+- (void)addObserverToMainThread;
+
 #pragma mark - 探究runloop mode的结构
-- (void)addSource;
-- (void)getRunloopModeStructure;
+- (void)addSourceToThread;
+- (void)addSourceToMainRunloop;
+
+- (void)getMainRunloopStructure;
+- (void)getThreadRunLoopStructure;
 @end

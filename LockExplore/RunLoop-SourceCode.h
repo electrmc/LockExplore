@@ -81,4 +81,15 @@ struct __CFRunLoop {
     CFTypeRef _counterpart;
 };
 
+struct __CFRunLoopObserver {
+    CFRuntimeBase _base;
+    pthread_mutex_t _lock;
+    CFRunLoopRef _runLoop;
+    CFIndex _rlCount;
+    CFOptionFlags _activities;        /* immutable */
+    CFIndex _order;            /* immutable */
+    CFRunLoopObserverCallBack _callout;    /* immutable */
+    CFRunLoopObserverContext _context;    /* immutable, except invalidation */
+};
+
 #endif /* RunLoop_SourceCode_h */
