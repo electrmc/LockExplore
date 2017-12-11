@@ -21,6 +21,12 @@
 - (void)addObserverToThread;
 - (void)addObserverToMainThread;
 
+#pragma mark - runloop 对autorelease的影响
+- (void)addAutoReleasePoolObserver;
+
+#pragma mark - 是否会在一个runloop中处理执行两个performSelector
+- (void)executeMethod2;
+
 #pragma mark - 探究runloop mode的结构
 - (void)addSourceToThread;
 - (void)addSourceToMainRunloop;

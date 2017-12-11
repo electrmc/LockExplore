@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.oe = [NSRunloopExplore new];
+    self.oe = [[NSRunloopExplore alloc]init];
     self.scrollview.contentSize = CGSizeMake(500, 500);
 }
 
@@ -45,6 +45,10 @@
     [self.oe addSourceToThread];
 }
 
+- (IBAction)autoreleasePoolObserver:(id)sender {
+    [self.oe addAutoReleasePoolObserver];
+}
+
 - (IBAction)mainRunloopModeSturcture:(id)sender {
     [self.oe getMainRunloopStructure];
 }
@@ -60,5 +64,12 @@
 
 - (IBAction)addObserverToMain:(id)sender {
     [self.oe addObserverToMainThread];
+}
+- (IBAction)perform2:(id)sender {
+    [self.oe executeMethod2];
+}
+
+- (void)dealloc {
+    NSLog(@"%s",__func__);
 }
 @end

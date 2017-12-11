@@ -17,10 +17,21 @@ BOOL shouldKeepRunning = YES;
     NSLog(@"%s",__func__);
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _thread = [[NSThread alloc]initWithTarget:self selector:@selector(initloop) object:nil];
+        [_thread setName:@"runloopExplore"];
+    }
+    return self;
+}
+
 - (void)startThreadWithRunloop {
-    _thread = [[NSThread alloc]initWithTarget:self selector:@selector(initloop) object:nil];
-    [_thread setName:@"runloopExplore"];
-    [_thread start];
+    if (![_thread isExecuting]) {
+        [_thread start];
+    } else {
+        NSLog(@"thread is running");
+    }
 }
 
 - (void)initloop {
@@ -39,17 +50,33 @@ BOOL shouldKeepRunning = YES;
          * 调用[runloop run]方法，线程中的runloop是无法停止的。
          *
          * 下面while不会无限调用与下面的NSLog(@"runloop is finished!!")不会立即执行的原因是：
-         * runMode:beforDate:处卡住了，一直在等待。直到该方法返回。目前该方法何时返回还不清楚
+         * runMode:beforDate:处卡住了，一直在等待。直到该方法返回。
          * 如果把shouldKeepRunning写死为1，就是[runloop run]的实现
          * 同时需要注意的是：[thread isCancelled]和[thread isExecuting]可以同时返回YES
+         * 使用NSRunLoop的@selector(run),@selector(runUntilDate:)和@selector(runMode:beforeDate:)
+         * 都是调用CFRunLoopRunInMode(mode,time,YES)
+         * 重要的是第三个参数为YES，表示处理完一个事件后就会返回
          */
-        [runloop run];
-        NSLog(@"fds");
-        while (shouldKeepRunning) {
-            NSLog(@"---> 开始一个新的runloop");
-            [runloop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-            NSLog(@"running!!!!");
-            NSLog(@"---> 一个runloop结束");
+        while (shouldKeepRunning) {            
+            CFRunLoopRunResult result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 999999.0, NO);
+            switch (result) {
+                case kCFRunLoopRunFinished:
+                    NSLog(@"runloop 结束");
+                    break;
+                case kCFRunLoopRunStopped:
+                    NSLog(@"runloop 停止 stopped");
+                    break;
+                case kCFRunLoopRunTimedOut:
+                    NSLog(@"runloop 超时");
+                    break;
+                case kCFRunLoopRunHandledSource:
+                    NSLog(@"runloop 处理完source");
+                    break;
+                default:
+                    break;
+            }
+            NSLog(@"---> 结束了一个runloop");
+            
         }
     }
     /*
@@ -87,6 +114,25 @@ BOOL shouldKeepRunning = YES;
     }
 }
 
+#pragma mark - 是否会在一个runloop中处理执行两个performSelector
+/*
+ * 经试验，所以积压的方法会在一个runloop执行完成
+ */
+
+- (void)executeMethod {
+    [self performSelector:@selector(executeMethod2) onThread:_thread withObject:nil waitUntilDone:NO];
+}
+
+- (void)executeMethod2 {
+    NSLog(@"%s",__func__);
+    for (int i=0; i<20; i++) {
+        [self performSelector:@selector(funcInThread2) withObject:nil afterDelay:1.0];
+    }
+}       
+
+- (void)funcInThread2 {
+    NSLog(@"%s",__func__);
+}
 
 /**
  向runloop中添加observer，观察其状态
@@ -111,20 +157,46 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
             NSLog(@"结束等待");
             break;
         case kCFRunLoopExit:
-            NSLog(@"runloop exit");
+            NSLog(@"退出runloop");
             break;
         default:
             break;
     }
 }
 
+#pragma mark - 探究autorelease
+- (void)addAutoReleasePoolObserver {
+    // 注册RunLoop状态观察
+    CFRunLoopObserverContext context = {0,"0xa1 exit & before waiting",NULL,NULL};
+    CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                            0xA0,
+                                                            YES,
+                                                            0,
+                                                            &runLoopObserverCallBack,
+                                                            &context);
+    CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
+    
+    CFRunLoopObserverContext context1 = {0,"0x01 entry",NULL,NULL};
+    CFRunLoopObserverRef observer1 = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                            0x01,
+                                                            YES,
+                                                            0,
+                                                            &runLoopObserverCallBack,
+                                                            &context1);
+    CFRunLoopAddObserver(CFRunLoopGetMain(), observer1, kCFRunLoopCommonModes);
+}
+
+#pragma mark - runloop中的observer
+/**
+ 只有_thread跑起来才能运行performSelector方法。否则，这些方法会积压在runloop中，等到_thread跑起来时就会一起调用以下方法
+ */
 - (void)addObserverToThread {
     [self performSelector:@selector(addObserver) onThread:_thread withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
 }
 
 - (void)addObserver {
     // 注册RunLoop状态观察
-    CFRunLoopObserverContext context = {0,(__bridge void*)self,NULL,NULL};
+    CFRunLoopObserverContext context = {0,"sub thread all activities",NULL,NULL};
     CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
                                                             kCFRunLoopAllActivities,
                                                             YES,
@@ -168,18 +240,7 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
 /*
   探究主线程以及线程中的CommonMode是否真实存在
  */
-- (void)addSourceToMainRunloop {
-    NSRunLoop *mainLoop = [NSRunLoop mainRunLoop];
-    NSTimer *timerx = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(timerTest:) userInfo:@"trackingTimer" repeats:YES];
-    [mainLoop addTimer:timerx forMode:UITrackingRunLoopMode];
-    NSTimer *timerx1 = [NSTimer timerWithTimeInterval:6.0 target:self selector:@selector(timerTest:) userInfo:@"defaultTimer" repeats:YES];
-    [mainLoop addTimer:timerx1 forMode:NSDefaultRunLoopMode];
-    NSTimer *timerx2 = [NSTimer timerWithTimeInterval:7.0 target:self selector:@selector(timerTest:) userInfo:@"commonTimer" repeats:YES];
-    [mainLoop addTimer:timerx2 forMode:NSRunLoopCommonModes];
-    NSTimer *timerx3 = [NSTimer timerWithTimeInterval:8.0 target:self selector:@selector(timerTest:) userInfo:@"customTimer" repeats:YES];
-    [mainLoop addTimer:timerx3 forMode:@"CustomMode"];
-}
-
+    	
 - (void)addSourceToThread{
     [self performSelector:@selector(addSourceToRunloop) onThread:_thread withObject:nil waitUntilDone:NO];
 }
@@ -216,9 +277,11 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
     NSLog(@"%@,%@,%@",currentRunloop,runloop,cfrunloop2);
 }
 
+
+/*
+ * timer是在__CFRunLoopDoTimers中执行的
+ */
 - (void)timerTest:(NSTimer*)timer{
     NSLog(@"%@",timer.userInfo);
 }
-#pragma mark - 探究autorelease
-
 @end
