@@ -206,7 +206,7 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
 }
 
 - (void)getThreadRunLoopStructure {
-    [self performSelector:@selector(threadRunloopModeStructure) onThread:_thread withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(runloopModeStructure) onThread:_thread withObject:nil waitUntilDone:NO];
 }
 
 - (void)runloopModeStructure {
@@ -219,4 +219,6 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
 - (void)timerTest:(NSTimer*)timer{
     NSLog(@"%@",timer.userInfo);
 }
+#pragma mark - 探究autorelease
+
 @end
