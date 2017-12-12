@@ -23,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"thread program";
-    self.titles = @[@"lock in iOS",@"thread in iOS", @"runloop"];
-    self.vcNames = @[@"LockViewController", @"ThreadViewController", @"RunloopViewController"];
+    self.titles = @[@"lock in iOS",@"thread in iOS", @"runloop",@"dispatch time"];
+    self.vcNames = @[@"LockViewController", @"ThreadViewController", @"RunloopViewController",@"DispatchTimeViewController"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

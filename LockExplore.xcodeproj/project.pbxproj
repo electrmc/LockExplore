@@ -25,6 +25,8 @@
 		547167111E3758190052B632 /* OSSpinLockExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471670B1E3758190052B632 /* OSSpinLockExplore.m */; };
 		547167121E3758190052B632 /* SemaphoreExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471670D1E3758190052B632 /* SemaphoreExplore.m */; };
 		547167131E3758190052B632 /* SynchronizedLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471670F1E3758190052B632 /* SynchronizedLock.m */; };
+		54D054E31FDE7D1C008ADE87 /* DispatchTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D054E11FDE7D1C008ADE87 /* DispatchTimeViewController.m */; };
+		54D054E41FDE7D1C008ADE87 /* DispatchTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D054E21FDE7D1C008ADE87 /* DispatchTimeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,9 @@
 		5471670E1E3758190052B632 /* SynchronizedLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynchronizedLock.h; path = Lock/SynchronizedLock.h; sourceTree = "<group>"; };
 		5471670F1E3758190052B632 /* SynchronizedLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynchronizedLock.m; path = Lock/SynchronizedLock.m; sourceTree = "<group>"; };
 		549C9E7E1FD7F31700C834E2 /* RunLoop-SourceCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunLoop-SourceCode.h"; sourceTree = "<group>"; };
+		54D054E01FDE7D1C008ADE87 /* DispatchTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DispatchTimeViewController.h; sourceTree = "<group>"; };
+		54D054E11FDE7D1C008ADE87 /* DispatchTimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DispatchTimeViewController.m; sourceTree = "<group>"; };
+		54D054E21FDE7D1C008ADE87 /* DispatchTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DispatchTimeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +124,9 @@
 				547166EF1E3752BC0052B632 /* ViewController.h */,
 				547166F01E3752BC0052B632 /* ViewController.m */,
 				547166F11E3752BC0052B632 /* ViewController.xib */,
+				54D054E01FDE7D1C008ADE87 /* DispatchTimeViewController.h */,
+				54D054E11FDE7D1C008ADE87 /* DispatchTimeViewController.m */,
+				54D054E21FDE7D1C008ADE87 /* DispatchTimeViewController.xib */,
 				547166F51E3756D40052B632 /* LockViewController.h */,
 				547166F61E3756D50052B632 /* LockViewController.m */,
 				547166F71E3756D50052B632 /* LockViewController.xib */,
@@ -220,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				547166FE1E3756F90052B632 /* ThreadViewController.xib in Resources */,
+				54D054E41FDE7D1C008ADE87 /* DispatchTimeViewController.xib in Resources */,
 				543591A61E44627700E58A9E /* RunloopViewController.xib in Resources */,
 				547166F91E3756D50052B632 /* LockViewController.xib in Resources */,
 				547166F31E3752BC0052B632 /* ViewController.xib in Resources */,
@@ -237,6 +246,7 @@
 				547167061E37580F0052B632 /* NSRunloopExplore.m in Sources */,
 				547166F21E3752BC0052B632 /* ViewController.m in Sources */,
 				547167071E37580F0052B632 /* ThreadExplore.m in Sources */,
+				54D054E31FDE7D1C008ADE87 /* DispatchTimeViewController.m in Sources */,
 				4CE2A9B81DF63456004C50EB /* AppDelegate.m in Sources */,
 				543591A51E44627700E58A9E /* RunloopViewController.m in Sources */,
 				547167101E3758190052B632 /* NSLockExplore.m in Sources */,
